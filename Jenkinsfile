@@ -61,6 +61,25 @@ pipeline {
             }
         }
 
+        stage('Prd Deploy Test') {
+            agent {
+                docker {
+                    image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
+                    reuseNode true
+                }
+            }
+
+            environment {
+                CI_ENVIRONMENT_URL='https://illustrious-hotteok-ccee86.netlify.app'
+            }
+
+            steps {
+                sh '''
+                    npx playwright test
+                '''
+            }
+        }        
+
 
     }
 }
