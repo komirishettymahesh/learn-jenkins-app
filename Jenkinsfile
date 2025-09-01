@@ -19,7 +19,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'node:18-alpine'
+                    image 'myplaywright'
                     reuseNode true
                 }
             }
@@ -39,7 +39,7 @@ pipeline {
         stage("Test"){
             agent {
                 docker {
-                    image 'node:18-alpine'
+                    image 'myplaywright'
                     reuseNode true
                 }
             }
